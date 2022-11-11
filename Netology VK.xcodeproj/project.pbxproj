@@ -1,0 +1,655 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3451AC70E215F9CAD4E744A4 /* Pods_Netology_VK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD395A9088CCD1AA1155A86D /* Pods_Netology_VK.framework */; };
+		BC0B5D50291E3AC6005430A5 /* PostTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC0B5D4F291E3AC6005430A5 /* PostTextView.swift */; };
+		BC248A9F28C7867E00449FAA /* DataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC248A9E28C7867E00449FAA /* DataFetcher.swift */; };
+		BC2BFC1D2885F4C300D5CED1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC1C2885F4C300D5CED1 /* AppDelegate.swift */; };
+		BC2BFC1F2885F4C300D5CED1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC1E2885F4C300D5CED1 /* SceneDelegate.swift */; };
+		BC2BFC212885F4C300D5CED1 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC202885F4C300D5CED1 /* StartViewController.swift */; };
+		BC2BFC262885F4CA00D5CED1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFC252885F4CA00D5CED1 /* Assets.xcassets */; };
+		BC2BFC292885F4CA00D5CED1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFC272885F4CA00D5CED1 /* LaunchScreen.storyboard */; };
+		BC2BFC32288854CB00D5CED1 /* StartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC31288854CB00D5CED1 /* StartPresenter.swift */; };
+		BC2BFC352888552000D5CED1 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC342888552000D5CED1 /* Coordinator.swift */; };
+		BC2BFC382888576B00D5CED1 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2BFC372888576B00D5CED1 /* SignUpViewController.swift */; };
+		BC2BFC482888AFE500D5CED1 /* Inter-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFC472888AFE000D5CED1 /* Inter-Medium.ttf */; };
+		BC2BFC492888AFE800D5CED1 /* Inter-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFC462888AFE000D5CED1 /* Inter-Regular.ttf */; };
+		BC2BFC4A2888AFEB00D5CED1 /* Inter-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC2BFC452888AFE000D5CED1 /* Inter-SemiBold.ttf */; };
+		BC2F0FAB28D5C267000D0E2E /* RepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F0FAA28D5C267000D0E2E /* RepostView.swift */; };
+		BC5B8A1228B23A0700AC575B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1128B23A0700AC575B /* FeedViewController.swift */; };
+		BC5B8A1528B241C400AC575B /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1428B241C400AC575B /* MainTabBarController.swift */; };
+		BC5B8A1728B2421F00AC575B /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1628B2421F00AC575B /* SignUpPresenter.swift */; };
+		BC5B8A1928B2447400AC575B /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1828B2447400AC575B /* FeedPresenter.swift */; };
+		BC5B8A1B28B2489500AC575B /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1A28B2489500AC575B /* FeedModel.swift */; };
+		BC5B8A2028B24D6100AC575B /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1F28B24D6100AC575B /* ProfileViewController.swift */; };
+		BC5B8A2228B24D7800AC575B /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A2128B24D7800AC575B /* ProfilePresenter.swift */; };
+		BC5B8A2528B251B900AC575B /* LikedPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A2428B251B900AC575B /* LikedPostsViewController.swift */; };
+		BC5B8A2728B251E400AC575B /* LikedPostsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A2628B251E400AC575B /* LikedPostsPresenter.swift */; };
+		BC5B8A2928B252CA00AC575B /* ProfileModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A2828B252CA00AC575B /* ProfileModel.swift */; };
+		BC5B8A2B28B28A0100AC575B /* MainPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A2A28B28A0100AC575B /* MainPresenter.swift */; };
+		BC616F3228CF96B90061A0B5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC616F3128CF96B90061A0B5 /* Extensions.swift */; };
+		BC99A13528CF3484006295D2 /* NetworkModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC99A13428CF3484006295D2 /* NetworkModels.swift */; };
+		BC9D11182909675200760E23 /* LowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC9D11172909675200760E23 /* LowView.swift */; };
+		BCB372F5291BE5610092C952 /* NetworkDataFetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB372F4291BE5610092C952 /* NetworkDataFetcher.swift */; };
+		BCB9CBDE28C754CE00D0B667 /* NetworService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCB9CBDD28C754CE00D0B667 /* NetworService.swift */; };
+		BCBF550A290031F400D86E1C /* PostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF5509290031F400D86E1C /* PostView.swift */; };
+		BCBF550C2900325A00D86E1C /* NewAttachmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCBF550B2900325A00D86E1C /* NewAttachmentsView.swift */; };
+		BCC8F848289812F500437FE7 /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCC8F847289812F400437FE7 /* MessageViewController.swift */; };
+		BCD07FAB29092A8600B2121F /* TopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD07FAA29092A8600B2121F /* TopView.swift */; };
+		BCD07FAD290930DD00B2121F /* AttachmentsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD07FAC290930DD00B2121F /* AttachmentsView.swift */; };
+		BCDB90C828C4CED6003D2CAB /* VkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */; };
+		BCE7505D28B3A25B001CAF88 /* MainModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE7505C28B3A25B001CAF88 /* MainModel.swift */; };
+		BCE7506128B4F427001CAF88 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE7506028B4F427001CAF88 /* PostTableViewCell.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		0FD1939223364E650F748687 /* Pods-Netology VK.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netology VK.release.xcconfig"; path = "Target Support Files/Pods-Netology VK/Pods-Netology VK.release.xcconfig"; sourceTree = "<group>"; };
+		7E40DD75343AAAFECB1CDE0B /* Pods-Netology VK.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Netology VK.debug.xcconfig"; path = "Target Support Files/Pods-Netology VK/Pods-Netology VK.debug.xcconfig"; sourceTree = "<group>"; };
+		BC0B5D4F291E3AC6005430A5 /* PostTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTextView.swift; sourceTree = "<group>"; };
+		BC248A9E28C7867E00449FAA /* DataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFetcher.swift; sourceTree = "<group>"; };
+		BC2BFC192885F4C300D5CED1 /* Netology VK.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Netology VK.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BC2BFC1C2885F4C300D5CED1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BC2BFC1E2885F4C300D5CED1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		BC2BFC202885F4C300D5CED1 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		BC2BFC252885F4CA00D5CED1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BC2BFC282885F4CA00D5CED1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BC2BFC31288854CB00D5CED1 /* StartPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartPresenter.swift; sourceTree = "<group>"; };
+		BC2BFC342888552000D5CED1 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		BC2BFC372888576B00D5CED1 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		BC2BFC452888AFE000D5CED1 /* Inter-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-SemiBold.ttf"; sourceTree = "<group>"; };
+		BC2BFC462888AFE000D5CED1 /* Inter-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Regular.ttf"; sourceTree = "<group>"; };
+		BC2BFC472888AFE000D5CED1 /* Inter-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Inter-Medium.ttf"; sourceTree = "<group>"; };
+		BC2F0FAA28D5C267000D0E2E /* RepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostView.swift; sourceTree = "<group>"; };
+		BC4822DF28C614AD008CC250 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BC5B8A1128B23A0700AC575B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		BC5B8A1428B241C400AC575B /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		BC5B8A1628B2421F00AC575B /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		BC5B8A1828B2447400AC575B /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
+		BC5B8A1A28B2489500AC575B /* FeedModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedModel.swift; sourceTree = "<group>"; };
+		BC5B8A1F28B24D6100AC575B /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		BC5B8A2128B24D7800AC575B /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		BC5B8A2428B251B900AC575B /* LikedPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsViewController.swift; sourceTree = "<group>"; };
+		BC5B8A2628B251E400AC575B /* LikedPostsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LikedPostsPresenter.swift; sourceTree = "<group>"; };
+		BC5B8A2828B252CA00AC575B /* ProfileModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileModel.swift; sourceTree = "<group>"; };
+		BC5B8A2A28B28A0100AC575B /* MainPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainPresenter.swift; sourceTree = "<group>"; };
+		BC616F3128CF96B90061A0B5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		BC99A13428CF3484006295D2 /* NetworkModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkModels.swift; sourceTree = "<group>"; };
+		BC9D11172909675200760E23 /* LowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LowView.swift; sourceTree = "<group>"; };
+		BCB372F4291BE5610092C952 /* NetworkDataFetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkDataFetcher.swift; sourceTree = "<group>"; };
+		BCB9CBDD28C754CE00D0B667 /* NetworService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworService.swift; sourceTree = "<group>"; };
+		BCBF5509290031F400D86E1C /* PostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostView.swift; sourceTree = "<group>"; };
+		BCBF550B2900325A00D86E1C /* NewAttachmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAttachmentsView.swift; sourceTree = "<group>"; };
+		BCC8F847289812F400437FE7 /* MessageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		BCD07FAA29092A8600B2121F /* TopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopView.swift; sourceTree = "<group>"; };
+		BCD07FAC290930DD00B2121F /* AttachmentsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AttachmentsView.swift; sourceTree = "<group>"; };
+		BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAuthService.swift; sourceTree = "<group>"; };
+		BCE7505C28B3A25B001CAF88 /* MainModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainModel.swift; sourceTree = "<group>"; };
+		BCE7506028B4F427001CAF88 /* PostTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		DD395A9088CCD1AA1155A86D /* Pods_Netology_VK.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Netology_VK.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BC2BFC162885F4C300D5CED1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3451AC70E215F9CAD4E744A4 /* Pods_Netology_VK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		6AE216CE5DB4E5804D4E4417 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD395A9088CCD1AA1155A86D /* Pods_Netology_VK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		AFC59CDEA7C3576B4D313B6A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				7E40DD75343AAAFECB1CDE0B /* Pods-Netology VK.debug.xcconfig */,
+				0FD1939223364E650F748687 /* Pods-Netology VK.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC2BFC102885F4C300D5CED1 = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC1B2885F4C300D5CED1 /* Netology VK */,
+				BC2BFC1A2885F4C300D5CED1 /* Products */,
+				AFC59CDEA7C3576B4D313B6A /* Pods */,
+				6AE216CE5DB4E5804D4E4417 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		BC2BFC1A2885F4C300D5CED1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC192885F4C300D5CED1 /* Netology VK.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC2BFC1B2885F4C300D5CED1 /* Netology VK */ = {
+			isa = PBXGroup;
+			children = (
+				BCDB90C628C4CEBC003D2CAB /* Services */,
+				BC2BFC3928889E7500D5CED1 /* Fonts */,
+				BC2BFC30288854A600D5CED1 /* StartModule */,
+				BCC8F846289811DF00437FE7 /* ConfirmationMessageModule */,
+				BC2BFC362888573C00D5CED1 /* SignUpModule */,
+				BC5B8A1328B2418800AC575B /* MainTabBarModule */,
+				BC5B8A1028B239D800AC575B /* FeedModule */,
+				BC5B8A1C28B24D2000AC575B /* ProfileModule */,
+				BC5B8A2328B2519D00AC575B /* LikedPostsModile */,
+				BC2BFC332888550900D5CED1 /* Coordinator */,
+				BC2BFC1C2885F4C300D5CED1 /* AppDelegate.swift */,
+				BC2BFC1E2885F4C300D5CED1 /* SceneDelegate.swift */,
+				BC2BFC252885F4CA00D5CED1 /* Assets.xcassets */,
+				BC4822DF28C614AD008CC250 /* Info.plist */,
+				BC2BFC272885F4CA00D5CED1 /* LaunchScreen.storyboard */,
+			);
+			path = "Netology VK";
+			sourceTree = "<group>";
+		};
+		BC2BFC30288854A600D5CED1 /* StartModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC202885F4C300D5CED1 /* StartViewController.swift */,
+				BC2BFC31288854CB00D5CED1 /* StartPresenter.swift */,
+			);
+			path = StartModule;
+			sourceTree = "<group>";
+		};
+		BC2BFC332888550900D5CED1 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC342888552000D5CED1 /* Coordinator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		BC2BFC362888573C00D5CED1 /* SignUpModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC372888576B00D5CED1 /* SignUpViewController.swift */,
+				BC5B8A1628B2421F00AC575B /* SignUpPresenter.swift */,
+			);
+			path = SignUpModule;
+			sourceTree = "<group>";
+		};
+		BC2BFC3928889E7500D5CED1 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BC2BFC472888AFE000D5CED1 /* Inter-Medium.ttf */,
+				BC2BFC462888AFE000D5CED1 /* Inter-Regular.ttf */,
+				BC2BFC452888AFE000D5CED1 /* Inter-SemiBold.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BC2F0FAC28D5C279000D0E2E /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				BCE7506028B4F427001CAF88 /* PostTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		BC2F0FAD28D5C282000D0E2E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BC2F0FAA28D5C267000D0E2E /* RepostView.swift */,
+				BC0B5D4F291E3AC6005430A5 /* PostTextView.swift */,
+				BCD07FAC290930DD00B2121F /* AttachmentsView.swift */,
+				BCD07FAA29092A8600B2121F /* TopView.swift */,
+				BC9D11172909675200760E23 /* LowView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		BC5B8A1028B239D800AC575B /* FeedModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC5B8A1128B23A0700AC575B /* FeedViewController.swift */,
+				BC2F0FAC28D5C279000D0E2E /* Cells */,
+				BC2F0FAD28D5C282000D0E2E /* Views */,
+				BCBF5508290031CF00D86E1C /* NewViews */,
+				BC5B8A1828B2447400AC575B /* FeedPresenter.swift */,
+				BC5B8A1A28B2489500AC575B /* FeedModel.swift */,
+			);
+			path = FeedModule;
+			sourceTree = "<group>";
+		};
+		BC5B8A1328B2418800AC575B /* MainTabBarModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC5B8A1428B241C400AC575B /* MainTabBarController.swift */,
+				BC5B8A2A28B28A0100AC575B /* MainPresenter.swift */,
+				BCE7505C28B3A25B001CAF88 /* MainModel.swift */,
+			);
+			path = MainTabBarModule;
+			sourceTree = "<group>";
+		};
+		BC5B8A1C28B24D2000AC575B /* ProfileModule */ = {
+			isa = PBXGroup;
+			children = (
+				BC5B8A1F28B24D6100AC575B /* ProfileViewController.swift */,
+				BC5B8A2828B252CA00AC575B /* ProfileModel.swift */,
+				BC5B8A2128B24D7800AC575B /* ProfilePresenter.swift */,
+			);
+			path = ProfileModule;
+			sourceTree = "<group>";
+		};
+		BC5B8A2328B2519D00AC575B /* LikedPostsModile */ = {
+			isa = PBXGroup;
+			children = (
+				BC5B8A2428B251B900AC575B /* LikedPostsViewController.swift */,
+				BC5B8A2628B251E400AC575B /* LikedPostsPresenter.swift */,
+			);
+			path = LikedPostsModile;
+			sourceTree = "<group>";
+		};
+		BCBF5508290031CF00D86E1C /* NewViews */ = {
+			isa = PBXGroup;
+			children = (
+				BCBF5509290031F400D86E1C /* PostView.swift */,
+				BCBF550B2900325A00D86E1C /* NewAttachmentsView.swift */,
+			);
+			path = NewViews;
+			sourceTree = "<group>";
+		};
+		BCC8F846289811DF00437FE7 /* ConfirmationMessageModule */ = {
+			isa = PBXGroup;
+			children = (
+				BCC8F847289812F400437FE7 /* MessageViewController.swift */,
+			);
+			path = ConfirmationMessageModule;
+			sourceTree = "<group>";
+		};
+		BCDB90C628C4CEBC003D2CAB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */,
+				BCB9CBDD28C754CE00D0B667 /* NetworService.swift */,
+				BCB372F4291BE5610092C952 /* NetworkDataFetcher.swift */,
+				BC99A13428CF3484006295D2 /* NetworkModels.swift */,
+				BC248A9E28C7867E00449FAA /* DataFetcher.swift */,
+				BC616F3128CF96B90061A0B5 /* Extensions.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BC2BFC182885F4C300D5CED1 /* Netology VK */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BC2BFC2D2885F4CA00D5CED1 /* Build configuration list for PBXNativeTarget "Netology VK" */;
+			buildPhases = (
+				E67FE2E0698B9D32F41D6B27 /* [CP] Check Pods Manifest.lock */,
+				BC2BFC152885F4C300D5CED1 /* Sources */,
+				BC2BFC162885F4C300D5CED1 /* Frameworks */,
+				BC2BFC172885F4C300D5CED1 /* Resources */,
+				8E901C9C210A9740779114CB /* [CP] Embed Pods Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Netology VK";
+			productName = "Netology VK";
+			productReference = BC2BFC192885F4C300D5CED1 /* Netology VK.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BC2BFC112885F4C300D5CED1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1330;
+				LastUpgradeCheck = 1330;
+				TargetAttributes = {
+					BC2BFC182885F4C300D5CED1 = {
+						CreatedOnToolsVersion = 13.3;
+					};
+				};
+			};
+			buildConfigurationList = BC2BFC142885F4C300D5CED1 /* Build configuration list for PBXProject "Netology VK" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = BC2BFC102885F4C300D5CED1;
+			productRefGroup = BC2BFC1A2885F4C300D5CED1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BC2BFC182885F4C300D5CED1 /* Netology VK */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BC2BFC172885F4C300D5CED1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2BFC292885F4CA00D5CED1 /* LaunchScreen.storyboard in Resources */,
+				BC2BFC262885F4CA00D5CED1 /* Assets.xcassets in Resources */,
+				BC2BFC492888AFE800D5CED1 /* Inter-Regular.ttf in Resources */,
+				BC2BFC4A2888AFEB00D5CED1 /* Inter-SemiBold.ttf in Resources */,
+				BC2BFC482888AFE500D5CED1 /* Inter-Medium.ttf in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		8E901C9C210A9740779114CB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Netology VK/Pods-Netology VK-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Netology VK/Pods-Netology VK-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Netology VK/Pods-Netology VK-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E67FE2E0698B9D32F41D6B27 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Netology VK-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BC2BFC152885F4C300D5CED1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BC2BFC382888576B00D5CED1 /* SignUpViewController.swift in Sources */,
+				BC248A9F28C7867E00449FAA /* DataFetcher.swift in Sources */,
+				BCDB90C828C4CED6003D2CAB /* VkAuthService.swift in Sources */,
+				BCBF550A290031F400D86E1C /* PostView.swift in Sources */,
+				BC5B8A1228B23A0700AC575B /* FeedViewController.swift in Sources */,
+				BC99A13528CF3484006295D2 /* NetworkModels.swift in Sources */,
+				BC5B8A1528B241C400AC575B /* MainTabBarController.swift in Sources */,
+				BC2BFC212885F4C300D5CED1 /* StartViewController.swift in Sources */,
+				BC2F0FAB28D5C267000D0E2E /* RepostView.swift in Sources */,
+				BC5B8A2028B24D6100AC575B /* ProfileViewController.swift in Sources */,
+				BC5B8A2728B251E400AC575B /* LikedPostsPresenter.swift in Sources */,
+				BC2BFC32288854CB00D5CED1 /* StartPresenter.swift in Sources */,
+				BCE7505D28B3A25B001CAF88 /* MainModel.swift in Sources */,
+				BC2BFC352888552000D5CED1 /* Coordinator.swift in Sources */,
+				BC2BFC1D2885F4C300D5CED1 /* AppDelegate.swift in Sources */,
+				BCD07FAB29092A8600B2121F /* TopView.swift in Sources */,
+				BC5B8A2928B252CA00AC575B /* ProfileModel.swift in Sources */,
+				BCB9CBDE28C754CE00D0B667 /* NetworService.swift in Sources */,
+				BC0B5D50291E3AC6005430A5 /* PostTextView.swift in Sources */,
+				BC5B8A2228B24D7800AC575B /* ProfilePresenter.swift in Sources */,
+				BC5B8A2528B251B900AC575B /* LikedPostsViewController.swift in Sources */,
+				BC9D11182909675200760E23 /* LowView.swift in Sources */,
+				BC5B8A1B28B2489500AC575B /* FeedModel.swift in Sources */,
+				BC5B8A2B28B28A0100AC575B /* MainPresenter.swift in Sources */,
+				BC2BFC1F2885F4C300D5CED1 /* SceneDelegate.swift in Sources */,
+				BCB372F5291BE5610092C952 /* NetworkDataFetcher.swift in Sources */,
+				BC616F3228CF96B90061A0B5 /* Extensions.swift in Sources */,
+				BCE7506128B4F427001CAF88 /* PostTableViewCell.swift in Sources */,
+				BCBF550C2900325A00D86E1C /* NewAttachmentsView.swift in Sources */,
+				BC5B8A1728B2421F00AC575B /* SignUpPresenter.swift in Sources */,
+				BC5B8A1928B2447400AC575B /* FeedPresenter.swift in Sources */,
+				BCC8F848289812F500437FE7 /* MessageViewController.swift in Sources */,
+				BCD07FAD290930DD00B2121F /* AttachmentsView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BC2BFC272885F4CA00D5CED1 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BC2BFC282885F4CA00D5CED1 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BC2BFC2B2885F4CA00D5CED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BC2BFC2C2885F4CA00D5CED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BC2BFC2E2885F4CA00D5CED1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7E40DD75343AAAFECB1CDE0B /* Pods-Netology VK.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NZF7D66GZB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Netology VK/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.Netology-VK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BC2BFC2F2885F4CA00D5CED1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 0FD1939223364E650F748687 /* Pods-Netology VK.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NZF7D66GZB;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Netology VK/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "-.Netology-VK";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BC2BFC142885F4C300D5CED1 /* Build configuration list for PBXProject "Netology VK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2BFC2B2885F4CA00D5CED1 /* Debug */,
+				BC2BFC2C2885F4CA00D5CED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BC2BFC2D2885F4CA00D5CED1 /* Build configuration list for PBXNativeTarget "Netology VK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BC2BFC2E2885F4CA00D5CED1 /* Debug */,
+				BC2BFC2F2885F4CA00D5CED1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BC2BFC112885F4C300D5CED1 /* Project object */;
+}
