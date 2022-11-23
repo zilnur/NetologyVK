@@ -3,6 +3,7 @@ import UIKit
 
 extension Int {
     
+    //Преобразует в Int в String с указанием даты формата день-месяц "в" часы:минуты
     func toDate() -> String {
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
@@ -14,6 +15,7 @@ extension Int {
 
 extension UIImageView {
     
+    //Проверяет кэш на наличие сохраненного изображения и устанавливает в качестве проперти image. В случае отсутствия в кэше, скачивает и сохраняет
     func download(from: String) {
         guard let url = URL(string: from) else { return }
         
@@ -37,7 +39,8 @@ extension UIImageView {
 
 extension UIView {
     
-    func anchor(top: NSLayoutYAxisAnchor?, leading: NSLayoutXAxisAnchor?, bottom: NSLayoutYAxisAnchor?, trailing: NSLayoutXAxisAnchor?, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
+    //Чуть упрощает верстку.
+    func anchor(top: NSLayoutYAxisAnchor? = nil, leading: NSLayoutXAxisAnchor? = nil, bottom: NSLayoutYAxisAnchor? = nil, trailing: NSLayoutXAxisAnchor? = nil, padding: UIEdgeInsets = .zero, size: CGSize = .zero) {
             
             if let top = top {
                 topAnchor.constraint(equalTo: top, constant: padding.top).isActive = true
@@ -67,12 +70,13 @@ extension UIView {
 
 extension String {
     
-    func height(width: CGFloat, font: UIFont) -> CGFloat {
-            let textSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+    //Возвращет высоту текста.
+    func height() -> CGFloat {
+            let textSize = CGSize(width: CGFloat(323), height: .greatestFiniteMagnitude)
             
             let size = self.boundingRect(with: textSize,
                                          options: .usesLineFragmentOrigin,
-                                         attributes: [NSAttributedString.Key.font : font],
+                                         attributes: [NSAttributedString.Key.font : UIFont(name: "Inter-Regular", size: 14)!],
                                          context: nil)
             return size.height
         }

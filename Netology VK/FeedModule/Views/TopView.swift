@@ -14,6 +14,7 @@ class TopView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.cornerRadius = 30
         view.clipsToBounds = true
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -21,6 +22,7 @@ class TopView: UIView {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.font = UIFont(name: "Inter-Medium", size: 16)
+        view.isUserInteractionEnabled = true
         return view
     }()
     
@@ -42,17 +44,27 @@ class TopView: UIView {
         return view
     }()
     
+    var closure: (() -> Void)?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
         setupView()
+        addRecognizer()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupView() {
+    private func addRecognizer() {
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(avataOrNameTapped))
+        avatarImageView.addGestureRecognizer(recognizer)
+        nameLabel.addGestureRecognizer(recognizer)
+    }
+    
+    //Настройка UI
+    private func setupView() {
         [avatarImageView, nameLabel, dateLabel, menuButton].forEach(addSubview(_:))
         
         avatarImageView.anchor(top: topAnchor,
@@ -82,9 +94,16 @@ class TopView: UIView {
                                
     }
     
-    func setValues(from post: Post) {
+    //Устанавливает значения для дочерних вью
+    func setValues(from post: Post, closure: (() -> Void)?) {
         nameLabel.text = post.autorName
         avatarImageView.download(from: post.autorImage)
         dateLabel.text = post.postDate.toDate()
+        self.closure = closure
+    }
+    
+    @objc
+    func avataOrNameTapped() {
+        closure?()
     }
 }

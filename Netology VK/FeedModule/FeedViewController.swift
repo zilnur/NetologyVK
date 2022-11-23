@@ -1,8 +1,9 @@
 import UIKit
 
 class FeedViewController: UIViewController {
+    //MARK: -Properties
     
-    var pres: FeedPresenter
+    var pres: FeedPresenterOutput!
     
     lazy var ref: UIRefreshControl = {
         let view = UIRefreshControl()
@@ -22,20 +23,12 @@ class FeedViewController: UIViewController {
         return view
     }()
     
-    init (pres: FeedPresenter) {
-        self.pres = pres
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    //MARK: -Functions
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        naviController()
         postsTableView.refreshControl?.beginRefreshing()
-        pres.setModel {
+        pres?.setModel { [weak self] in
+            guard let self else { return }
             DispatchQueue.main.async {
                 self.postsTableView.refreshControl?.endRefreshing()
                 self.postsTableView.reloadData()
@@ -45,10 +38,12 @@ class FeedViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        naviController()
         setupViews()
     }
     
-    func setupViews() {
+    //Настройка UI
+    private func setupViews() {
         view.addSubview(postsTableView)
         
         postsTableView.anchor(top: view.safeAreaLayoutGuide.topAnchor,
@@ -57,15 +52,17 @@ class FeedViewController: UIViewController {
                               trailing: view.trailingAnchor)
     }
     
-    func naviController() {
-        let app = UINavigationBarAppearance()
-        app.configureWithOpaqueBackground()
-        app.backgroundColor = .white
-        navigationController?.navigationBar.scrollEdgeAppearance = app
+    //Настройка UINavigationController
+    private func naviController() {
+        let leftBarItem = UIBarButtonItem(title: "Главная", style: .plain, target: nil, action: nil)
+        leftBarItem.isEnabled = false
+        leftBarItem.setTitleTextAttributes([.font: UIFont(name: "Inter-SemiBold", size: 18)!, .foregroundColor: UIColor.black], for: .disabled)
+        navigationItem.leftBarButtonItem = leftBarItem
     }
     
+    //Настройка Pull to refresh
     @objc func refreshTableView() {
-        pres.setModel {
+        pres?.setModel {
             DispatchQueue.main.async {
                 self.postsTableView.refreshControl?.endRefreshing()
                 self.postsTableView.reloadData()
@@ -77,7 +74,7 @@ class FeedViewController: UIViewController {
 extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        pres.numberOfCells()
+        pres?.numberOfCells() ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -87,30 +84,32 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
         }
         cell.selectionStyle = .none
         cell.backgroundColor = indexPath.row % 2 != 0 ? UIColor(named: "test") : .white
-        cell.setValues(model: pres.getModel().posts[indexPath.row],
-                       attachments: pres.getModel().attachments[indexPath.row],
-                       history: pres.getModel().copyHistory[indexPath.row],
-                       attachmentsHeight: pres.getModel().attachentsImageHeight[indexPath.row],
-                       historyHeight: pres.getModel().historyImageHeight[indexPath.row]) { [weak self] bool in
+        cell.setValues(model: pres!.getModel().posts[indexPath.row],
+                       attachments: pres!.getModel().attachments[indexPath.row],
+                       history: pres!.getModel().copyHistory[indexPath.row],
+                       attachmentsHeight: pres!.getModel().attachentsImageHeight[indexPath.row],
+                       historyHeight: pres!.getModel().historyImageHeight[indexPath.row]) {
+            [weak self] in
+            guard let self = self else {return}
+            self.pres.toProfileModule(id: self.pres.getModel().posts[indexPath.row].sourceId)
+        } completion: { [weak self] bool in
             guard let self = self else {return}
             switch bool {
             case false:
-                self.pres.addLike(sourceId: self.pres.getModel().posts[indexPath.row].sourceId,
-                                  itemId: self.pres.getModel().posts[indexPath.row].postId)
+                self.pres?.addLike(sourceId: self.pres!.getModel().posts[indexPath.row].sourceId,
+                                  itemId: self.pres!.getModel().posts[indexPath.row].postId)
             case true:
-                self.pres.deleteLike(sourceId: self.pres.getModel().posts[indexPath.row].sourceId,
-                                  itemId: self.pres.getModel().posts[indexPath.row].postId)
+                self.pres?.deleteLike(sourceId: self.pres!.getModel().posts[indexPath.row].sourceId,
+                                  itemId: self.pres!.getModel().posts[indexPath.row].postId)
             }
+        } handler: {
+            tableView.beginUpdates()
+            tableView.endUpdates()
         }
         return cell
     }
     
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            let cell = tableView.cellForRow(at: indexPath) as! PostTableViewCell
-            tableView.beginUpdates()
-            cell.postText.numberOfLines = cell.postText.numberOfLines == 0 ? 4 : 0
-            cell.repostView.postTextLabel.numberOfLines = cell.repostView.postTextLabel.numberOfLines == 0 ? 4 : 0
-            cell.draw(.zero)
-            tableView.endUpdates()
+            pres.toPostModule(index: indexPath.row)
         }
 }

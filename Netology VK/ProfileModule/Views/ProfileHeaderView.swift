@@ -8,13 +8,34 @@
 import UIKit
 
 class ProfileHeaderView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    private let topView = ProfileViewTopView()
+    private let lowView = ProfileHeaderLowView()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupViews()
     }
-    */
-
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    private func setupViews() {
+        backgroundColor = .white
+        [topView, lowView].forEach(addSubview(_:))
+        topView.anchor(top: topAnchor,
+                       leading: leadingAnchor,
+                       bottom: nil,
+                       trailing: trailingAnchor)
+        lowView.anchor(top: topView.bottomAnchor,
+                       leading: leadingAnchor,
+                       bottom: bottomAnchor,
+                       trailing: trailingAnchor)
+    }
+    
+    func setupValues(from profile: Profile) {
+        topView.setupValues(from: profile)
+        lowView.setupViews(from: profile)
+    }
 }

@@ -5,6 +5,8 @@ protocol PostDetailViewInput {
     func setPostComments(completion: @escaping () -> Void)
     func getModel() -> PostDetailModel
     func createNewComment(message: String)
+    func addLike(sourceId: String, itemId: String, type: String)
+    func deleteLike(sourceId: String, itemId: String, type: String)
 }
 
 protocol PostDetailViewOutput {
@@ -24,6 +26,7 @@ class PostDetailPresenter: PostDetailViewInput {
         self.view = view
     }
     
+    //Получает из сети данные для модели
     func setPostComments(completion: @escaping () -> Void) {
         let ownerId = model.post.sourceId > 0 ? String(describing: model.post.sourceId) : String(describing: -model.post.sourceId)
         dataFetcher.feedDataFetcher.getComments(postId: String(describing: model.post.postId), ownerid: ownerId) { [weak self] result in
@@ -36,8 +39,9 @@ class PostDetailPresenter: PostDetailViewInput {
                 var _comments = [Comment]()
                 items.forEach { item in
                     let user = self.profile(for: item.fromId, profiles: profiles, groups: groups)
-                    let thread = [Comment]()
-                    let comment = Comment(autorAvatar: user.photo50,
+                    let comment = Comment(id: item.id,
+                                          autorId: item.fromId,
+                                          autorAvatar: user.photo50,
                                           autorName: user.name,
                                           text: item.text,
                                           date: item.date,
@@ -53,39 +57,39 @@ class PostDetailPresenter: PostDetailViewInput {
         }
     }
     
+    //Передает модель
     func getModel() -> PostDetailModel {
         model
     }
     
+    //поставить лайе
+    func addLike(sourceId: String, itemId: String, type: String) {
+        dataFetcher.feedDataFetcher.addLike(sourceId: sourceId, itemId: itemId, type: type)
+    }
+    
+    //Удалить лайк
+    func deleteLike(sourceId: String, itemId: String, type: String) {
+        dataFetcher.feedDataFetcher.deleteLike(sourceId: sourceId, itemId: itemId,type: type)
+    }
+    
+    //Создать комментарий
     func createNewComment(message: String) {
         let ownerId = model.post.sourceId > 0 ? model.post.sourceId : -model.post.sourceId
         let date = Date()
         let timeInterval = date.timeIntervalSince1970
         dataFetcher.feedDataFetcher.createComments(postId: String(describing: model.post.postId), ownerId: String(describing: ownerId), message: message) { [weak self] in
             guard let self else { return }
-            self.dataFetcher.userDataFetcher.getUser(userid: VKSdk.accessToken().userId) { result in
-                switch result {
-                case .success(let user):
-                    let comment = Comment(autorAvatar: user.response[0].photo50,
-                                          autorName: user.response[0].name,
-                                          text: message,
-                                          date: Int(timeInterval),
-                                          likes: 0,
-                                          isLiked: false)
-                    self.model.comments?.append(comment)
+            self.setPostComments {
+                DispatchQueue.main.async {
+                    self.view.reloadTable()
                     self.model.post.comments += 1
-                    DispatchQueue.main.async {
-                        self.view.reloadTable()
-                    }
-                    
-                case .failure(_):
-                    break
                 }
             }
         }
         
     }
     
+    //Возвращает информацию об авторе комментария
     private func profile(for sourseId: Int, profiles: [Profiles], groups: [Groups]) -> UserInfo {
         
         let profilesOrGroups: [UserInfo] = sourseId >= 0 ? profiles : groups

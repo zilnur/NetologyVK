@@ -5,36 +5,29 @@ struct FeedModel {
     let posts: [Post]
 }
 
-struct Comment {
-    let autorAvatar: String
-    let autorName: String
-    let date: Int
-    let likes: Int
-    let isLiked: Bool
-}
-
 struct Post {
-    let shorts: [String]?
     let sourceId: Int
     let postId: Int
     let autorName: String
     let postDate: Int
     let autorImage: String
-    let postDescription: String
-    let postImage: String?
-    let imageHeight: Int?
+    let postText: PostText
     let isLiked: Bool
     let likes: Int
-    let comments: Int
+    var comments: Int
     let attachements: PostAttachements?
     let copyHistory: History?
+}
+
+struct PostText {
+    let text: String
 }
 
 struct History {
     let name: String
     let avatarImage: String
-    let text: String
-    let attachments: PostAttachements?
+    let text: PostText
+    var attachments: PostAttachements?
 }
 
 struct PostAttachements {

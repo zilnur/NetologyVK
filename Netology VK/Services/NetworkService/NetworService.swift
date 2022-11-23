@@ -1,27 +1,25 @@
 import Foundation
 import VK_ios_sdk
 
-struct Friends: Codable {
-    let items: Set<Int>
-}
-
 final class NetworkService {
     
-    func getData(path: String, items: [String: String],completion: @escaping (Data?, Error?) -> Void) {
+    //Запрос в сеть
+    func makeRequest(path: String, items: [String: String],completion: @escaping (Data?, Error?) -> Void) {
         let task = self.sessionDataTask(path: path, queryItems: items, completion: completion)
         task.resume()
     }
     
+    //Сбор URL
     func url(path: String, queryItems: [String:String]) -> URL {
         var components = URLComponents()
         components.scheme = "https"
         components.host = "api.vk.com"
         components.path = path
         components.queryItems = queryItems.map { URLQueryItem(name: $0, value: $1) }
-        print(components.description)
         return components.url!
     }
     
+    //Возвращает sessionDataTask с нужным url
     func sessionDataTask(path: String, queryItems: [String: String], completion: @escaping (Data?, Error?) -> Void) -> URLSessionDataTask {
         
         var items = queryItems
@@ -29,7 +27,7 @@ final class NetworkService {
         print(VKSdk.accessToken().accessToken as String)
         items["v"] = "5.131"
         let url = url(path: path, queryItems: items)
-        print(url)
+        print(url.description)
         let request = URLRequest(url: url)
         return URLSession.shared.dataTask(with: request) { data, _, error in
             completion(data, error)

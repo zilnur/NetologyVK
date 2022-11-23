@@ -22,22 +22,15 @@ class VkAuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
         VkSDK.uiDelegate = self
     }
     
-    func setDelegates(delegate: VKSdkDelegate, uiDelegate: VKSdkUIDelegate) {
-        
-    }
-    
     func wakeUpSession() {
-        let scope = ["wall,friends"]
+        let scope = ["wall,friends,photos,video,groups"]
         VKSdk.wakeUpSession(scope) { [weak self] state, error in
             guard let self = self else { return }
             switch state {
             case .initialized:
-                print(state)
                 VKSdk.authorize(scope)
-                
             case .authorized:
                 self.delegate?.authorized()
-                
             default:
                 print(error?.localizedDescription as Any )
             }
@@ -46,7 +39,6 @@ class VkAuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
     func vkSdkAccessAuthorizationFinished(with result: VKAuthorizationResult!) {
         if result.token != nil {
-            print(result.token!)
             delegate?.authorized()
         }
     }

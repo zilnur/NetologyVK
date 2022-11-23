@@ -29,7 +29,8 @@ class AttachmentsView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    //MARK: -Настройка UI
+    private func setupViews() {
         addSubview(imageView)
         imageView.anchor(top: topAnchor,
                              leading: leadingAnchor,
@@ -37,8 +38,7 @@ class AttachmentsView: UIView {
                              trailing: trailingAnchor)
     }
     
-    func setupHeigth() {
-
+    private func setupHeigth() {
         if imageHeightConstraint == nil {
             if let height = height {
                 imageHeightConstraint = imageView.heightAnchor.constraint(equalToConstant: CGFloat(height))
@@ -48,12 +48,15 @@ class AttachmentsView: UIView {
             imageHeightConstraint?.isActive = false
         }
     }
-    
+    //MARK: -Конец настройки UI
+
+    //Устанавливает значения для дочерних вью
     func setValues(from attachment: PostAttachements) {
         imageView.download(from: attachment.url)
         height = attachment.height
     }
     
+    //Передать в одноименный метод в UITableViewCell
     func prepareForReuse() {
         imageView.image = nil
         height = nil

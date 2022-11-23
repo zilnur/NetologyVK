@@ -3,8 +3,6 @@ import VK_ios_sdk
 
 protocol StartViewInput {
     func toSignUpView()
-    func setAuthServiceDelegates(delegate: VKSdkDelegate, uiDelegate: VKSdkUIDelegate)
-    func networkTest()
 }
 
 protocol StartViewOutput {
@@ -14,37 +12,32 @@ protocol StartViewOutput {
 
 class StartModulePresenter: StartViewInput {
     
-//    let coordinator: Coordinator
+    let coordinator: Coordinator
     var authService: VkAuthService?
-    let networkFetcher = NetworkDataFetcher()
+    weak var window: UIWindow?
+    let view: StartViewOutput
     
-    var view: StartViewOutput?
-    
-//    init() {
-//
-//    }
-    
-    func toSignUpView() {
-        authService?.wakeUpSession()
+    init(view: StartViewOutput, coordinator: Coordinator) {
+        self.view = view
+        self.coordinator = coordinator
     }
     
-    func setAuthServiceDelegates(delegate: VKSdkDelegate, uiDelegate: VKSdkUIDelegate) {
-        
+    //Запускает процесс авторизации
+    func toSignUpView() {
+        authService?.wakeUpSession()
     }
 }
 
 extension StartModulePresenter: AuthDelegate {
+    
+    //Переходит на экран авторизации.
     func shouldPresent(controller: UIViewController) {
-        view?.presentAuthView(controller: controller)
+        view.presentAuthView(controller: controller)
     }
     
+    //В случае успешной авторизации переходит на главный экран
     func authorized() {
-        let presenter = FeedPresenter()
-        let view1 = FeedViewController(pres: presenter)
-        view?.pushNextView(controller: view1)
-    }
-    
-    func networkTest() {
-//        networkService.getData(token: authService!.token!)
+        guard let token = Int(authService?.token ?? "") else { return }
+        window?.rootViewController = coordinator.generalModule(id: token)
     }
 }

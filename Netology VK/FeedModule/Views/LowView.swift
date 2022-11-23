@@ -59,10 +59,11 @@ class LowView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func setupViews() {
+    //Настройка UI
+    private func setupViews() {
         [likesButton, likesValueLabel, commentsButton, commentsValueLabel, bookmarkImageView].forEach(addSubview(_:))
         
-        [likesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 52),
+        [likesButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
          likesButton.topAnchor.constraint(equalTo: topAnchor, constant: 20),
          likesButton.heightAnchor.constraint(equalToConstant: 20),
          likesButton.widthAnchor.constraint(equalToConstant: 20),
@@ -86,11 +87,13 @@ class LowView: UIView {
         ].forEach({$0.isActive = true})
     }
     
+    //Передать в одноименный метод в UITableViewCell
     func prepareForReuse() {
         likesValueLabel.text = nil
         commentsValueLabel.text = nil
     }
     
+    //Устанавливает значения для дочерних вью
     func setValues(from post: Post) {
         likesButton.setImage(post.isLiked ? UIImage(systemName: "heart.fill") : UIImage(systemName: "heart"), for: .normal)
         likesValueLabel.text = String(post.likes)

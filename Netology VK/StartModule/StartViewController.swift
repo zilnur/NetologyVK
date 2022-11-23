@@ -3,7 +3,8 @@ import VK_ios_sdk
 
 class StartViewController: UIViewController {
     
-    let presenter: StartModulePresenter
+    //MARK: -Properties
+    weak var presenter: StartModulePresenter?
     
     private let logoImageView: UIImageView = {
         let view = UIImageView(image: UIImage(named: "logo"))
@@ -22,21 +23,13 @@ class StartViewController: UIViewController {
         return view
     }()
     
-    init(presenter: StartModulePresenter) {
-        self.presenter = presenter
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
+    //MARK: -Functions
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
-        presenter.networkTest()
     }
-
+    
+    //Настройка UI
     private func setupViews() {
         view.backgroundColor = .white
         [logoImageView, signUpButton].forEach(view.addSubview(_:))
@@ -51,20 +44,21 @@ class StartViewController: UIViewController {
         ].forEach({$0.isActive = true})
     }
     
+    //Нажаьтие на кнопку
     @objc private func signUpTapped() {
-        presenter.toSignUpView()
+        presenter?.toSignUpView()
     }
 
 }
 
 extension StartViewController: StartViewOutput {
     
+    //Переход на экран авторизации
     func presentAuthView(controller: UIViewController) {
-        self.modalPresentationStyle = .currentContext
-        self.modalTransitionStyle = .coverVertical
         self.present(controller, animated: true)
     }
     
+    //Переход на главный экран
     func pushNextView(controller: UIViewController) {
         navigationController?.pushViewController(controller, animated: true)
     }

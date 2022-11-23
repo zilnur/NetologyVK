@@ -43,11 +43,13 @@ struct Attachmentes: Codable {
 
 struct Photo: Codable {
     let sizes: [Size]
-    var height: Int {return getUrl().height}
-    var width: Int {return getUrl().width}
-    var url: String {return getUrl().url}
-    private func getUrl() -> Size {
-        if let sizeX = sizes.first(where: { $0.type == "q" }) {
+    var height: Int {return getUrl("q").height}
+    var width: Int {return getUrl("q").width}
+    var urlQ: String {return getUrl("q").url}
+    var urlS: String {return getUrl("s").url}
+    var urlM: String {return getUrl("m").url}
+    private func getUrl(_ type: String) -> Size {
+        if let sizeX = sizes.first(where: { $0.type == type }) {
                     return sizeX
                 } else if let fallBackSize = sizes.last {
                      return fallBackSize
@@ -82,4 +84,27 @@ struct Profiles: Codable, UserInfo {
     let firstName: String
     let lastName: String
     var name: String  {return firstName + " " + lastName}
+}
+
+struct CommentsWrapped: Codable {
+    let response: CommentsResponce
+}
+
+struct CommentsResponce: Codable {
+    let items: [CommentsItem]
+    let profiles: [Profiles]
+    let groups: [Groups]
+}
+
+struct CommentsItem: Codable {
+    let id: Int
+    let fromId: Int
+    let date: Int
+    let text: String
+    let likes: Likes
+    var thread: Thread?
+}
+
+struct Thread: Codable {
+    let items: [CommentsItem]
 }

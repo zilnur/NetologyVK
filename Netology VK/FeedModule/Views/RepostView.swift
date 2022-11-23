@@ -1,7 +1,10 @@
 import UIKit
 
 class RepostView: UIView {
-
+    
+    var postViewConstraints: [NSLayoutConstraint] = []
+    var imageTopConstraint: NSLayoutConstraint?
+    
     let repostArrowImage: UIImageView = {
         let view = UIImageView(image: UIImage(systemName: "arrow.uturn.backward"))
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -24,13 +27,7 @@ class RepostView: UIView {
         return view
     }()
     
-    let postTextLabel: UILabel = {
-       let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.font = UIFont(name: "Inter-Regular", size: 14)
-        view.numberOfLines = 4
-        return view
-    }()
+    let postView = PostTextView()
     
     let postPhotoImageView: UIImageView = {
         let view = UIImageView()
@@ -55,8 +52,9 @@ class RepostView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: -Настройка UI
     func setupViews() {
-        [repostArrowImage, userAvatar, userNameLabel, postTextLabel].forEach(addSubview(_:))
+        [repostArrowImage, userAvatar, userNameLabel, postPhotoImageView].forEach(addSubview(_:))
         
         [repostArrowImage.leadingAnchor.constraint(equalTo: leadingAnchor),
          repostArrowImage.topAnchor.constraint(equalTo: topAnchor, constant: 18),
@@ -72,28 +70,36 @@ class RepostView: UIView {
          userNameLabel.centerYAnchor.constraint(equalTo: userAvatar.centerYAnchor),
          userNameLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
          
-         postTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-         postTextLabel.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 5),
-         postTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+         postPhotoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+         postPhotoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+         postPhotoImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
+         
         ].forEach {$0.isActive = true}
-        
-        setupPostImage()
     }
     
-    func setupTextLabel() {
-        [postTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-         postTextLabel.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 5),
-         postTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
-        ].forEach{$0.isActive = true}
+    func setupPostViewConstraints() {
+        if postView.superview == nil {
+            addSubview(postView)
+        }
+        if postViewConstraints.isEmpty {
+            postViewConstraints = [
+                postView.leadingAnchor.constraint(equalTo: leadingAnchor),
+                postView.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 5),
+                postView.trailingAnchor.constraint(equalTo: trailingAnchor),
+                postPhotoImageView.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 5)
+            ]
+        }
+        imageTopConstraint?.isActive = false
+        postViewConstraints.forEach({$0.isActive = true})
     }
     
-    func setupPostImage() {
-        addSubview(postPhotoImageView)
-        [postPhotoImageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-        postPhotoImageView.topAnchor.constraint(equalTo: postTextLabel.bottomAnchor, constant: 5),
-        postPhotoImageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-        postPhotoImageView.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ].forEach{$0.isActive = true}
+    func setupTopImageConstraint() {
+        if imageTopConstraint == nil {
+            imageTopConstraint = postPhotoImageView.topAnchor.constraint(equalTo: userAvatar.bottomAnchor, constant: 5)
+        }
+        postView.removeFromSuperview()
+        postViewConstraints.forEach({$0.isActive = false})
+        imageTopConstraint?.isActive = true
     }
     
     func setupHeight() {
@@ -106,20 +112,23 @@ class RepostView: UIView {
             imageHeightConstraint?.isActive = false
         }
     }
+    //MARK: -Конец настройки UI
     
+    //Передать в одноименный метод в UITableViewCell
     func prepareForReuse() {
         userAvatar.image = nil
         userNameLabel.text = nil
         postPhotoImageView.image = nil
-        postTextLabel.text = nil
+        postView.prepareForReuse()
         height = nil
     }
     
-    func setValuse(from history: History) {
+    //Устанавливает значения для дочерних вью
+    func setValuse(from history: History, handler: (() -> Void)?) {
         userNameLabel.text = history.name
         userAvatar.download(from: history.avatarImage)
-        postTextLabel.text = history.text
-        
+        postView.setValue(from: history.text)
+        postView.handler = handler
         if let attachments = history.attachments {
             postPhotoImageView.download(from: attachments.url)
             height = attachments.height

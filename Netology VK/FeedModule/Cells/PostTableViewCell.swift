@@ -2,40 +2,20 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
-    var moreButtonConstraints: [NSLayoutConstraint] = []
+    var postViewConstraints: [NSLayoutConstraint] = []
     var repostViewConstraints: [NSLayoutConstraint] = []
     var lowViewConstraint: NSLayoutConstraint?
+    var attachmentViewConstraint: NSLayoutConstraint?
     
     let topView = TopView()
-    
-    let postText: UILabel = {
-        let view = UILabel()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.numberOfLines = 0
-        view.font = UIFont(name: "Inter-Regular", size: 14)
-        view.contentMode = .top
-        return view
-    }()
-    
-    let moreButton: UIButton = {
-       let view = UIButton()
-        view.translatesAutoresizingMaskIntoConstraints = false
-        view.setTitle("Показать больше", for: .normal)
-        return view
-    }()
-    
+    let postView = PostTextView()
     let attachmentsView = AttachmentsView()
-    
     var repostView = RepostView()
-    
     let lowView = LowView()
-    
-    var id: Int?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupViews()
-        setupLowView()
     }
     
     required init?(coder: NSCoder) {
@@ -48,53 +28,57 @@ class PostTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        postText.text = nil
+        postView.prepareForReuse()
         repostView.prepareForReuse()
         attachmentsView.prepareForReuse()
         lowView.prepareForReuse()
     }
     
-    func setValues(model: Post, attachments: PostAttachements?, history: History?,attachmentsHeight: Int?, historyHeight: Int?, completion: ((Bool) -> Void)?) {
+    //Устанавливает значения для всех дочерних вью
+    func setValues(model: Post, attachments: PostAttachements?, history: History?,attachmentsHeight: Int?, historyHeight: Int?, topViewClosure: (() -> Void)?, completion: ((Bool) -> Void)?, handler: (() -> Void)?) {
         history != nil ? setupRepostViewConstraints() : setupLowViewConstraints()
+        model.postText.text.isEmpty ? setupAttachmentViewConstraint() : setupPostViewConstraints()
         
-        id = model.postId
-        postText.text = model.postDescription
-        let textWidth = contentView.frame.width - 67
-        if model.postDescription.height(width: textWidth, font: UIFont(name: "Inter-Regular", size: 14)!) > 68 {
-            setupButtonConstraints()
+        model.postText.text.height() > 68 ? postView.setupButtonConstraints() : postView.setupTextViewConstraint()
+        
+        if model.copyHistory != nil {
+            model.copyHistory!.text.text.isEmpty ? repostView.setupTopImageConstraint() : repostView.setupPostViewConstraints()
+            
+            model.copyHistory!.text.text.height() > 68 ? repostView.postView.setupButtonConstraints() : repostView.postView.setupTextViewConstraint()
         }
         
-        topView.setValues(from: model)
+        topView.setValues(from: model, closure: topViewClosure)
+        postView.setValue(from: model.postText)
+        postView.handler = handler
         lowView.setValues(from: model)
         lowView.completion = completion
+        
+        if let history {
+            repostView.setValuse(from: history, handler: handler)
+        }
         
         if let attachments = model.attachements {
             attachmentsView.setValues(from: attachments)
         }
         
-        if let history = history {
-            repostView.setValuse(from: history)
-        }
-        
     }
     
+    //MARK: -Настройка UI
     func setupViews() {
         contentView.backgroundColor = .clear
         
-        [topView, postText, attachmentsView, lowView].forEach(contentView.addSubview(_:))
+        [topView, attachmentsView, lowView].forEach(contentView.addSubview(_:))
         
         [topView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
          topView.topAnchor.constraint(equalTo: contentView.topAnchor),
          topView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-         
-         postText.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
-         postText.topAnchor.constraint(equalTo: topView.bottomAnchor),
-         postText.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-         postText.heightAnchor.constraint(equalToConstant: 85),
-         
+
          attachmentsView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
-         attachmentsView.topAnchor.constraint(equalTo: postText.bottomAnchor, constant: 15),
-         attachmentsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15)
+         attachmentsView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+         
+         lowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 36),
+         lowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+         lowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ].forEach {$0.isActive = true}
     }
     
@@ -103,11 +87,11 @@ class PostTableViewCell: UITableViewCell {
             contentView.addSubview(repostView)
         }
         if repostViewConstraints.isEmpty {
-        repostViewConstraints = [repostView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
-         repostView.topAnchor.constraint(equalTo: attachmentsView.bottomAnchor, constant: 15),
-         repostView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
-         lowView.topAnchor.constraint(equalTo: repostView.bottomAnchor)
-        ]
+            repostViewConstraints = [repostView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
+            repostView.topAnchor.constraint(equalTo: attachmentsView.bottomAnchor, constant: 15),
+            repostView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -15),
+            lowView.topAnchor.constraint(equalTo: repostView.bottomAnchor)
+            ]
         }
         lowViewConstraint?.isActive = false
         repostViewConstraints.forEach({$0.isActive = true})
@@ -122,27 +106,31 @@ class PostTableViewCell: UITableViewCell {
         lowViewConstraint?.isActive = true
     }
     
-    func setupButtonConstraints() {
-        if moreButton.superview == nil {
-            contentView.addSubview(moreButton)
+    func setupPostViewConstraints() {
+        if postView.superview == nil {
+            contentView.addSubview(postView)
         }
-        if moreButtonConstraints.isEmpty {
-            moreButtonConstraints = [
-                moreButton.leadingAnchor.constraint(equalTo: postText.leadingAnchor),
-                moreButton.bottomAnchor.constraint(equalTo: postText.bottomAnchor),
-                moreButton.trailingAnchor.constraint(equalTo: postText.trailingAnchor),
-                moreButton.heightAnchor.constraint(equalToConstant: 17)
+        if postViewConstraints.isEmpty {
+            postViewConstraints = [
+                postView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 52),
+                postView.topAnchor.constraint(equalTo: topView.bottomAnchor),
+                postView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+                attachmentsView.topAnchor.constraint(equalTo: postView.bottomAnchor, constant: 15)
             ]
         }
-        moreButtonConstraints.forEach({$0.isActive = true})
+        attachmentViewConstraint?.isActive = false
+        postViewConstraints.forEach({$0.isActive = true})
     }
     
-    func setupLowView() {
-        [lowView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-         lowView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-         lowView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
-        ].forEach {$0.isActive = true}
+    func setupAttachmentViewConstraint() {
+        if attachmentViewConstraint == nil {
+            attachmentViewConstraint = attachmentsView.topAnchor.constraint(equalTo: topView.bottomAnchor)
+        }
+        postView.removeFromSuperview()
+        postViewConstraints.forEach({$0.isActive = false})
+        attachmentViewConstraint?.isActive = true
     }
+    //MARK: -Конец настройки UI
     
     func drawLines() {
         let path = UIBezierPath()
