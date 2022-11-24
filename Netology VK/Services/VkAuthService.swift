@@ -8,8 +8,7 @@ protocol AuthDelegate {
 
 class VkAuthService: NSObject, VKSdkDelegate, VKSdkUIDelegate {
     
-    //Вставить AppID вашего приложения и разкомментить
-//    let AppID = 
+    let AppID = "51412278"
     let VkSDK: VKSdk
     var delegate: AuthDelegate?
     var token: String? {
