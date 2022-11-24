@@ -9,6 +9,7 @@ protocol FeedPresenterOutput {
     func numberOfCells() -> Int
     func toPostModule(index: Int)
     func toProfileModule(id: Int)
+    func isLikedToggle(index: Int)
 }
 
 class FeedPresenter: FeedPresenterOutput {
@@ -35,7 +36,7 @@ class FeedPresenter: FeedPresenterOutput {
                 posts.forEach { item in
                     let user = self.profile(for: item.sourceId, profiles: profiles, groups: groups)
                     
-                    let post = Post(sourceId: item.sourceId.signum() == 1 ? item.sourceId : -item.sourceId,
+                    let post = Post(sourceId: item.sourceId,
                                     postId: item.postId,
                                     autorName: user.name,
                                     postDate: item.date,
@@ -141,5 +142,15 @@ class FeedPresenter: FeedPresenterOutput {
     func toProfileModule(id: Int) {
         let _id = id > 0 ? id : -id
         coordinator.openProfileModule(id: _id, from: .feed)
+    }
+    
+    func isLikedToggle(index: Int) {
+        switch model[index].isLiked {
+        case true:
+            model[index].likes -= 1
+        case false:
+            model[index].likes += 1
+        }
+        model[index].isLiked.toggle()
     }
 }

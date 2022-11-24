@@ -1026,6 +1026,7 @@
 			baseConfigurationReference = BF96D68E9D421AC6155481CB1F1B92EC /* VK-ios-sdk.release.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/VK-ios-sdk";
+				DEVELOPMENT_TEAM = NZF7D66GZB;
 				IBSC_MODULE = VK_ios_sdk;
 				INFOPLIST_FILE = "Target Support Files/VK-ios-sdk/ResourceBundle-VKSdkResources-VK-ios-sdk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -1077,6 +1078,7 @@
 			baseConfigurationReference = 3EE4C65D041C98C654C4140CA6213248 /* VK-ios-sdk.debug.xcconfig */;
 			buildSettings = {
 				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)/VK-ios-sdk";
+				DEVELOPMENT_TEAM = NZF7D66GZB;
 				IBSC_MODULE = VK_ios_sdk;
 				INFOPLIST_FILE = "Target Support Files/VK-ios-sdk/ResourceBundle-VKSdkResources-VK-ios-sdk-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

@@ -94,8 +94,8 @@
             filePath = "Netology VK/ProfileModule/ProfilePresenter.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "153"
-            endingLineNumber = "153"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
             landmarkName = "toProfileModule(id:)"
             landmarkType = "7">
          </BreakpointContent>

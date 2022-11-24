@@ -12,8 +12,8 @@ struct Post {
     let postDate: Int
     let autorImage: String
     let postText: PostText
-    let isLiked: Bool
-    let likes: Int
+    var isLiked: Bool
+    var likes: Int
     var comments: Int
     let attachements: PostAttachements?
     let copyHistory: History?

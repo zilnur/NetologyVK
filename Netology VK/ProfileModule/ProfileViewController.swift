@@ -118,8 +118,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
                 switch bool {
                 case false:
                     self.presenter.addlike(sourceId: sourceId, itemId: id)
+                    self.presenter.isLikedToggle(index: indexPath.row)
                 case true:
                     self.presenter.deleteLike(sourceId: sourceId, itemId: id)
+                    self.presenter.isLikedToggle(index: indexPath.row)
                 }
             } handler: {
                 tableView.beginUpdates()

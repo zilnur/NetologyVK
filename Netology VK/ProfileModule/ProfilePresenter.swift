@@ -12,6 +12,7 @@ protocol ProfileViewInput {
     func goBack()
     func deleteLike(sourceId: String, itemId: String)
     func isCurrentUserAccount() -> Bool
+    func isLikedToggle(index: Int)
 }
 
 class ProfilePresenter: ProfileViewInput {
@@ -165,6 +166,17 @@ class ProfilePresenter: ProfileViewInput {
     
     func isCurrentUserAccount() -> Bool {
         id == Int(authService.token!)
+    }
+    
+    func isLikedToggle(index: Int) {
+        guard model?.posts != nil else { return }
+        switch model!.posts![index].isLiked {
+        case true:
+            model!.posts![index].likes -= 1
+        case false:
+            model!.posts![index].likes += 1
+        }
+        model!.posts![index].isLiked.toggle()
     }
 }
 

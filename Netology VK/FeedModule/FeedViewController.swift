@@ -98,9 +98,11 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
             case false:
                 self.pres?.addLike(sourceId: self.pres!.getModel().posts[indexPath.row].sourceId,
                                   itemId: self.pres!.getModel().posts[indexPath.row].postId)
+                self.pres.isLikedToggle(index: indexPath.row)
             case true:
                 self.pres?.deleteLike(sourceId: self.pres!.getModel().posts[indexPath.row].sourceId,
                                   itemId: self.pres!.getModel().posts[indexPath.row].postId)
+                self.pres.isLikedToggle(index: indexPath.row)
             }
         } handler: {
             tableView.beginUpdates()
