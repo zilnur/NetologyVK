@@ -17,7 +17,6 @@ class DataFetcher {
         decoder.keyDecodingStrategy = .convertFromSnakeCase
         guard let data = data,
               let responce = try? decoder.decode(type.self, from: data) else {
-            print("Ooops!")
             return nil
         }
         return responce

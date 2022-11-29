@@ -7,14 +7,17 @@
 
 import UIKit
 
-class PhotoDetailViewController: UIViewController {
+class PhotoDetailViewController: ViewController {
     
     var presenter: PhotoDetailViewInput!
+    
+    private let refreshControl = UIRefreshControl()
     
     private lazy var photosTableView: UITableView = {
         let view = UITableView(frame: .zero, style: .grouped)
         view.translatesAutoresizingMaskIntoConstraints = false
         view.register(AllPhotosTableViewCell.self, forCellReuseIdentifier: "AllCell")
+        view.refreshControl = refreshControl
         view.dataSource = self
         view.delegate = self
         return view
@@ -33,6 +36,7 @@ class PhotoDetailViewController: UIViewController {
             guard let self else { return }
             DispatchQueue.main.async {
                 self.photosTableView.reloadData()
+                self.refreshControl.endRefreshing()
             }
         }
     }
@@ -40,6 +44,7 @@ class PhotoDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViews()
+        refreshControl.beginRefreshing()
     }
     
     private func setupViews() {
@@ -56,7 +61,7 @@ class PhotoDetailViewController: UIViewController {
 extension PhotoDetailViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        1
+        presenter.numberOfRows()
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

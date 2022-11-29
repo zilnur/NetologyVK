@@ -3,16 +3,17 @@ import Foundation
 protocol PhotoDetailViewInput {
     func setModel(completion: @escaping () -> Void)
     func getModel() -> PhotosDetailModel
+    func numberOfRows() -> Int
 }
 
 class PhotosDetailPresenter: PhotoDetailViewInput {
     
     var model = PhotosDetailModel()
     let dataFetcher: GeneralDataFetcher
-    let coordinator: Coordinator
+    let coordinator: CoordinatorProtocol
     let id: Int
     
-    init(dataFetcher: GeneralDataFetcher, coordinator: Coordinator, id: Int) {
+    init(dataFetcher: GeneralDataFetcher, coordinator: CoordinatorProtocol, id: Int) {
         self.dataFetcher = dataFetcher
         self.coordinator = coordinator
         self.id = id
@@ -48,5 +49,10 @@ class PhotosDetailPresenter: PhotoDetailViewInput {
     //Возвращает модель
     func getModel() -> PhotosDetailModel {
         model
+    }
+    
+    func numberOfRows() -> Int {
+        guard model.photos != nil else { return 0 }
+        return 1
     }
 }

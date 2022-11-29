@@ -14,11 +14,10 @@ struct UserPhotos: Codable {
 
 struct PhotoResponce: Codable {
     let count: Int
-    let items: [Photo]
+    let items: [AlbumPhoto]
 }
 
 struct AlbumPhoto: Codable {
-    let title: String
     let sizes: [Size]
     var height: Int {return getUrl("q").height}
     var width: Int {return getUrl("q").width}

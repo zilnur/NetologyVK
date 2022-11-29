@@ -6,13 +6,13 @@ protocol ProfileViewInput {
     func getModel() -> Profile?
     func numberOfCells() -> Int
     func addlike(sourceId: String, itemId: String)
-    func toPostModule(index: Int)
-    func toPhotosModule()
-    func toProfileModule(id: Int)
-    func goBack()
+    func toPhotosModule(from controller: String)
+    func toProfileModule(id: Int, from controller: String)
+    func goBack(_ controller: String)
     func deleteLike(sourceId: String, itemId: String)
     func isCurrentUserAccount() -> Bool
     func isLikedToggle(index: Int)
+    func toPostModule(from: String, index: Int)
 }
 
 class ProfilePresenter: ProfileViewInput {
@@ -20,10 +20,10 @@ class ProfilePresenter: ProfileViewInput {
     let dataFetcher: GeneralDataFetcher
     var id: Int
     var model: Profile?
-    let coordinator: Coordinator
+    let coordinator: CoordinatorProtocol
     let authService: VkAuthService
     
-    init(id: Int, dataFentcher: GeneralDataFetcher, coordinator: Coordinator, authService: VkAuthService) {
+    init(id: Int, dataFentcher: GeneralDataFetcher, coordinator: CoordinatorProtocol, authService: VkAuthService) {
         self.id = id
         self.dataFetcher = dataFentcher
         self.coordinator = coordinator
@@ -38,14 +38,13 @@ class ProfilePresenter: ProfileViewInput {
             guard let self else { return }
             switch result {
             case .success(let users):
-                print(users)
                 if let user = users.response.first {
                     let model = Profile(id: user.id,
                                         firstName: user.firstName,
                                         lastName: user.lastName,
                                         sexIsMale: user.sex == 1 ? true : false,
                                         photo: user.photo50,
-                                        birthday: user.bdate)
+                                        birthday: user.bdate ?? "0")
                     self.model = model
                 }
             case .failure(let error):
@@ -128,31 +127,22 @@ class ProfilePresenter: ProfileViewInput {
         return count
     }
     
-    func toPostModule(index: Int) {
+    func toPhotosModule(from controller: String) {
+        coordinator.openPhotosViewController(id: id, from: controller)
+    }
+    
+    func toPostModule(from: String, index: Int) {
         guard let posts = model?.posts else { return }
-        coordinator.openPostDetailmodule(post: posts[index], from: .profile)
+        coordinator.openPostDetailModule(from: from, post: posts[index])
     }
     
-    func toPhotosModule() {
-        if isCurrentUserAccount() {
-            coordinator.openPhotosModule(id: id, from: .profile)
-        } else {
-            coordinator.openPhotosModule(id: id, from: .feed)
-        }
+    func goBack(_ controller: String) {
+        coordinator.goToBack(from: controller)
     }
     
-    func goBack() {
-        if isCurrentUserAccount() {
-            coordinator.goToBack(from: .profile)
-        } else {
-            coordinator.goToBack(from: .feed)
-        }
-    }
-    
-    func toProfileModule(id: Int) {
-        let _id = id > 0 ? id : -id
-        if _id != self.id {
-            coordinator.openProfileModule(id: _id, from: .profile)
+    func toProfileModule(id: Int, from controller: String) {
+        if id != self.id && id > 0 {
+            coordinator.openProfileModule(id: id, from: controller)
         }
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: ViewController {
     
     var presenter: ProfileViewInput!
     
@@ -30,6 +30,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationItem.setHidesBackButton(true, animated: false)
         refreshControl.beginRefreshing()
         presenter?.setModel { [weak self] in
             guard let self else { return }
@@ -59,6 +60,7 @@ class ProfileViewController: UIViewController {
             leftBarItem.setTitleTextAttributes([.font: UIFont(name: "Inter-SemiBold", size: 18)!, .foregroundColor: UIColor.black], for: .disabled)
             navigationItem.leftBarButtonItem = leftBarItem
         }
+        navigationItem.setHidesBackButton(false, animated: true)
     }
     
     private func setupViews() {
@@ -83,7 +85,7 @@ class ProfileViewController: UIViewController {
     
     @objc
     func goPreviousController() {
-        presenter.goBack()
+        presenter.goBack(navigationController?.description ?? "")
     }
 
 }
@@ -110,7 +112,8 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
             cell1.backgroundColor = indexPath.row % 2 != 0 ? UIColor(named: "test") : .white
             cell1.setValues(model: posts[indexPath.row - 1]) { [weak self] in
                 guard let self else { return }
-                self.presenter.toProfileModule(id: posts[indexPath.row - 1].sourceId)
+                self.presenter.toProfileModule(id: posts[indexPath.row - 1].sourceId,
+                                               from: self.navigationController?.description ?? "")
             } completion: { [weak self] bool in
                 guard let self else {return}
                 let sourceId = String(describing: posts[indexPath.row - 1].sourceId)
@@ -141,9 +144,10 @@ extension ProfileViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.row != 0 {
-            presenter.toPostModule(index: indexPath.row - 1)
+            presenter.toPostModule(from: navigationController?.description ?? "",
+                                   index: indexPath.row - 1)
         } else {
-            presenter.toPhotosModule()
+            presenter.toPhotosModule(from: navigationController?.description ?? "")
         }
     }
     

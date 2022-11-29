@@ -112,7 +112,6 @@ class CommentTableViewCell: UITableViewCell {
     
     @objc
     func likesButtonTapped() {
-        print(completion == nil)
         guard let completion = completion else {return}
         if likesButton.image(for: .normal) == UIImage(systemName: "heart") {
             likesButton.setImage(UIImage(systemName: "heart.fill"), for: .normal)

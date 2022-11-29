@@ -12,6 +12,8 @@ class UserDataFetcher: DataFetcher {
             guard let data else { return }
             if let user = self.jsonDecoded(type: UserResponse.self, data: data) {
                 completion(.success(user))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -26,6 +28,8 @@ class UserDataFetcher: DataFetcher {
             guard let data else { return }
             if let subscriptions = self.jsonDecoded(type: UserSubscriptions.self, data: data) {
                 completion(.success(subscriptions))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -40,6 +44,8 @@ class UserDataFetcher: DataFetcher {
             guard let data else { return }
             if let followers = self.jsonDecoded(type: UserFollowers.self, data: data) {
                 completion(.success(followers))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -54,8 +60,9 @@ class UserDataFetcher: DataFetcher {
             }
             guard let data else { return }
             if let photos = self.jsonDecoded(type: UserPhotos.self, data: data) {
-                print(photos)
                 completion(.success(photos))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -70,6 +77,8 @@ class UserDataFetcher: DataFetcher {
             guard let data else { return }
             if let albums = self.jsonDecoded(type: AlbumsResponseWrapped.self, data: data) {
                 completion(.success(albums))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -84,6 +93,8 @@ class UserDataFetcher: DataFetcher {
             guard let data else { return }
             if let followers = self.jsonDecoded(type: UserPosts.self, data: data) {
                 completion(.success(followers))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }

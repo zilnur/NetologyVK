@@ -12,7 +12,7 @@ struct User: Codable, UserInfo {
     let lastName: String
     let sex: Int?
     let activities: String?
-    let bdate: String
+    let bdate: String?
 }
 
 struct UserSubscriptions: Codable {

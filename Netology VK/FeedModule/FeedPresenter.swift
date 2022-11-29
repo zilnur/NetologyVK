@@ -1,5 +1,6 @@
 import Foundation
 import UIKit
+import VK_ios_sdk
 
 protocol FeedPresenterOutput {
     func setModel(compl: @escaping () -> ())
@@ -7,18 +8,18 @@ protocol FeedPresenterOutput {
     func addLike(sourceId: Int, itemId: Int)
     func deleteLike(sourceId: Int, itemId: Int)
     func numberOfCells() -> Int
-    func toPostModule(index: Int)
-    func toProfileModule(id: Int)
+    func toProfileModule(id: Int, from controller: String)
     func isLikedToggle(index: Int)
+    func toPostModule(index: Int, register: String)
 }
 
 class FeedPresenter: FeedPresenterOutput {
     
     let dataFetcher: GeneralDataFetcher
     var model = [Post]()
-    let coordinator: Coordinator
+    let coordinator: CoordinatorProtocol
     
-    init(dataFetcher: GeneralDataFetcher, coordinator: Coordinator) {
+    init(dataFetcher: GeneralDataFetcher, coordinator: CoordinatorProtocol) {
         self.dataFetcher = dataFetcher
         self.coordinator = coordinator
     }
@@ -134,14 +135,16 @@ class FeedPresenter: FeedPresenterOutput {
     }
     
     //Переход на экран выбранного поста
-    func toPostModule(index: Int) {
-        coordinator.openPostDetailmodule(post: self.model[index], from: .feed)
+    func toPostModule(index: Int, register: String) {
+        print(model[index].sourceId)
+        coordinator.openPostDetailModule(from: register, post: model[index])
     }
     
     //Переход на экран профиля пользователя
-    func toProfileModule(id: Int) {
-        let _id = id > 0 ? id : -id
-        coordinator.openProfileModule(id: _id, from: .feed)
+    func toProfileModule(id: Int, from controller: String) {
+        if id > 0 && id != Int(VKSdk.accessToken().userId) {
+            coordinator.openProfileModule(id: id, from: controller)
+        }
     }
     
     func isLikedToggle(index: Int) {

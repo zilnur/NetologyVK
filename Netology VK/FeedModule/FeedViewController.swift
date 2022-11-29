@@ -1,6 +1,6 @@
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: ViewController {
     //MARK: -Properties
     
     var pres: FeedPresenterOutput!
@@ -91,7 +91,8 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
                        historyHeight: pres!.getModel().historyImageHeight[indexPath.row]) {
             [weak self] in
             guard let self = self else {return}
-            self.pres.toProfileModule(id: self.pres.getModel().posts[indexPath.row].sourceId)
+            self.pres.toProfileModule(id: self.pres.getModel().posts[indexPath.row].sourceId,
+                                      from: self.navigationController?.description ?? "")
         } completion: { [weak self] bool in
             guard let self = self else {return}
             switch bool {
@@ -112,6 +113,7 @@ extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
         func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            pres.toPostModule(index: indexPath.row)
+            print("feed \(self.description)")
+            pres.toPostModule(index: indexPath.row, register: self.navigationController?.description ?? "")
         }
 }

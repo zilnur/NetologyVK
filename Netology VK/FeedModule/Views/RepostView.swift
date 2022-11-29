@@ -121,6 +121,7 @@ class RepostView: UIView {
         postPhotoImageView.image = nil
         postView.prepareForReuse()
         height = nil
+        imageHeightConstraint = nil
     }
     
     //Устанавливает значения для дочерних вью

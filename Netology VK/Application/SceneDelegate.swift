@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let newScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(windowScene: newScene)
         window?.makeKeyAndVisible()
+        window?.overrideUserInterfaceStyle = .light
         let factory = Factory()
         let coordinator = Coordinator(factory, window: window)
         coordinator.start()

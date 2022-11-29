@@ -82,9 +82,7 @@ class AllPhotosTableViewCell: UITableViewCell {
         numberOfPhotoLabel.text = String(describing: photos.count)
         photosCollectionView.reloadData()
         let _height: Double = Double(photos.count) / 3
-        print(_height, ceil(_height))
         let height = ceil(_height) * photoHeight + 80
-        print(height)
         photosCollectionView.heightAnchor.constraint(equalToConstant: height).isActive = true
     }
 

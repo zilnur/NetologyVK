@@ -14,6 +14,8 @@ class FeedDataFetcher: DataFetcher {
             }
             if let decoded = self.jsonDecoded(type: FeedResponseWrapped.self, data: data) {
             completion(.success(decoded))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }
@@ -42,6 +44,8 @@ class FeedDataFetcher: DataFetcher {
             }
             if let decoded = self.jsonDecoded(type: CommentsWrapped.self, data: data) {
             completion(.success(decoded))
+            } else {
+                completion(.failure(MyErrors.jsonFailed))
             }
         }
     }

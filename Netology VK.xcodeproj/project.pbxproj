@@ -27,6 +27,8 @@
 		BC2C53EA2927BBE000154785 /* CommentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C53E92927BBE000154785 /* CommentTableViewCell.swift */; };
 		BC2C53EC2928FB4000154785 /* CreateCommentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2C53EB2928FB4000154785 /* CreateCommentView.swift */; };
 		BC2F0FAB28D5C267000D0E2E /* RepostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2F0FAA28D5C267000D0E2E /* RepostView.swift */; };
+		BC3A314029351F160023B199 /* UIViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3A313F29351F160023B199 /* UIViewControllerProtocol.swift */; };
+		BC3A3142293522440023B199 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3A3141293522440023B199 /* Router.swift */; };
 		BC5B8A1228B23A0700AC575B /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1128B23A0700AC575B /* FeedViewController.swift */; };
 		BC5B8A1928B2447400AC575B /* FeedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1828B2447400AC575B /* FeedPresenter.swift */; };
 		BC5B8A1B28B2489500AC575B /* FeedModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5B8A1A28B2489500AC575B /* FeedModel.swift */; };
@@ -53,6 +55,7 @@
 		BCD0A5AE2923E98000D07229 /* PhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD0A5AD2923E98000D07229 /* PhotosTableViewCell.swift */; };
 		BCD0A5B02923EEDB00D07229 /* ProfileWallTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD0A5AF2923EEDB00D07229 /* ProfileWallTableViewCell.swift */; };
 		BCD0A5B22923EF7D00D07229 /* PhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD0A5B12923EF7D00D07229 /* PhotoCollectionViewCell.swift */; };
+		BCD50A4C29366F4C00E1F6D9 /* MyErrors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD50A4B29366F4C00E1F6D9 /* MyErrors.swift */; };
 		BCDB90C828C4CED6003D2CAB /* VkAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */; };
 		BCE6A4E4292BB73E00AA5678 /* AllPhotosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6A4E3292BB73E00AA5678 /* AllPhotosTableViewCell.swift */; };
 		BCE6A4E7292BB8EC00AA5678 /* AllPhotosCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCE6A4E6292BB8EC00AA5678 /* AllPhotosCollectionViewCell.swift */; };
@@ -85,6 +88,8 @@
 		BC2C53E92927BBE000154785 /* CommentTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentTableViewCell.swift; sourceTree = "<group>"; };
 		BC2C53EB2928FB4000154785 /* CreateCommentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCommentView.swift; sourceTree = "<group>"; };
 		BC2F0FAA28D5C267000D0E2E /* RepostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepostView.swift; sourceTree = "<group>"; };
+		BC3A313F29351F160023B199 /* UIViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerProtocol.swift; sourceTree = "<group>"; };
+		BC3A3141293522440023B199 /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		BC4822DF28C614AD008CC250 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BC5B8A1128B23A0700AC575B /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		BC5B8A1828B2447400AC575B /* FeedPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedPresenter.swift; sourceTree = "<group>"; };
@@ -112,6 +117,7 @@
 		BCD0A5AD2923E98000D07229 /* PhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BCD0A5AF2923EEDB00D07229 /* ProfileWallTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileWallTableViewCell.swift; sourceTree = "<group>"; };
 		BCD0A5B12923EF7D00D07229 /* PhotoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		BCD50A4B29366F4C00E1F6D9 /* MyErrors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyErrors.swift; sourceTree = "<group>"; };
 		BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VkAuthService.swift; sourceTree = "<group>"; };
 		BCE6A4E3292BB73E00AA5678 /* AllPhotosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotosTableViewCell.swift; sourceTree = "<group>"; };
 		BCE6A4E6292BB8EC00AA5678 /* AllPhotosCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllPhotosCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -172,6 +178,7 @@
 		BC2BFC1B2885F4C300D5CED1 /* Netology VK */ = {
 			isa = PBXGroup;
 			children = (
+				BC3A313E29351EF60023B199 /* Extensions + Protocols */,
 				BC4822DF28C614AD008CC250 /* Info.plist */,
 				BCDB90C628C4CEBC003D2CAB /* Services */,
 				BC2BFC30288854A600D5CED1 /* StartModule */,
@@ -199,6 +206,7 @@
 			children = (
 				BC2BFC342888552000D5CED1 /* Coordinator.swift */,
 				BC2C53DC292653C000154785 /* Factory.swift */,
+				BC3A3141293522440023B199 /* Router.swift */,
 			);
 			path = "Coordinator + Factory";
 			sourceTree = "<group>";
@@ -260,6 +268,15 @@
 				BC9D11172909675200760E23 /* LowView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		BC3A313E29351EF60023B199 /* Extensions + Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BC616F3128CF96B90061A0B5 /* Extensions.swift */,
+				BC3A313F29351F160023B199 /* UIViewControllerProtocol.swift */,
+			);
+			path = "Extensions + Protocols";
 			sourceTree = "<group>";
 		};
 		BC5B8A1028B239D800AC575B /* FeedModule */ = {
@@ -337,6 +354,7 @@
 				BC6270B92921088100489E86 /* UserDataFetcher.swift */,
 				BC6270B72921084300489E86 /* DataFetcher.swift */,
 				BC6270B42921059500489E86 /* NetworkModels */,
+				BCD50A4B29366F4C00E1F6D9 /* MyErrors.swift */,
 			);
 			path = NetworkService;
 			sourceTree = "<group>";
@@ -382,7 +400,6 @@
 			children = (
 				BCDB90C728C4CED6003D2CAB /* VkAuthService.swift */,
 				BC6270B32921057C00489E86 /* NetworkService */,
-				BC616F3128CF96B90061A0B5 /* Extensions.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -540,6 +557,7 @@
 				BC2F0FAB28D5C267000D0E2E /* RepostView.swift in Sources */,
 				BC5B8A2028B24D6100AC575B /* ProfileViewController.swift in Sources */,
 				BC2BFC32288854CB00D5CED1 /* StartPresenter.swift in Sources */,
+				BCD50A4C29366F4C00E1F6D9 /* MyErrors.swift in Sources */,
 				BC2BFC352888552000D5CED1 /* Coordinator.swift in Sources */,
 				BC2BFC1D2885F4C300D5CED1 /* AppDelegate.swift in Sources */,
 				BCD0A5B02923EEDB00D07229 /* ProfileWallTableViewCell.swift in Sources */,
@@ -554,6 +572,7 @@
 				BC5ED4EB292BA92D0081D330 /* AlbumsTableViewCell.swift in Sources */,
 				BC6270BA2921088100489E86 /* UserDataFetcher.swift in Sources */,
 				BCB9CBDE28C754CE00D0B667 /* NetworService.swift in Sources */,
+				BC3A314029351F160023B199 /* UIViewControllerProtocol.swift in Sources */,
 				BCE6A4E7292BB8EC00AA5678 /* AllPhotosCollectionViewCell.swift in Sources */,
 				BC2C53E12927A4CD00154785 /* DetailPostHeaderView.swift in Sources */,
 				BC0B5D50291E3AC6005430A5 /* PostTextView.swift in Sources */,
@@ -567,6 +586,7 @@
 				BCFFC84629211DE400EC1CAC /* ProfileViewTopView.swift in Sources */,
 				BC2C53E32927AC3F00154785 /* PostDetailPresenter.swift in Sources */,
 				BC2BFC1F2885F4C300D5CED1 /* SceneDelegate.swift in Sources */,
+				BC3A3142293522440023B199 /* Router.swift in Sources */,
 				BCB372F5291BE5610092C952 /* FeedDataFetcher.swift in Sources */,
 				BC5ED4E3292B91400081D330 /* PhotoDetailPresenter.swift in Sources */,
 				BC2C53E52927AC9A00154785 /* PostDetailModel.swift in Sources */,
@@ -721,8 +741,8 @@
 				INFOPLIST_FILE = "Netology VK/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -749,8 +769,8 @@
 				INFOPLIST_FILE = "Netology VK/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIRequiredDeviceCapabilities = armv7;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -12,12 +12,11 @@ protocol StartViewOutput {
 
 class StartModulePresenter: StartViewInput {
     
-    let coordinator: Coordinator
+    let coordinator: CoordinatorProtocol
     var authService: VkAuthService?
-    weak var window: UIWindow?
     let view: StartViewOutput
     
-    init(view: StartViewOutput, coordinator: Coordinator) {
+    init(view: StartViewOutput, coordinator: CoordinatorProtocol) {
         self.view = view
         self.coordinator = coordinator
     }
@@ -38,6 +37,6 @@ extension StartModulePresenter: AuthDelegate {
     //В случае успешной авторизации переходит на главный экран
     func authorized() {
         guard let token = Int(authService?.token ?? "") else { return }
-        window?.rootViewController = coordinator.generalModule(id: token)
+        coordinator.generalModule(id: token)
     }
 }

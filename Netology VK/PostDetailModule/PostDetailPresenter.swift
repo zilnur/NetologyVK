@@ -28,7 +28,7 @@ class PostDetailPresenter: PostDetailViewInput {
     
     //Получает из сети данные для модели
     func setPostComments(completion: @escaping () -> Void) {
-        let ownerId = model.post.sourceId > 0 ? String(describing: model.post.sourceId) : String(describing: -model.post.sourceId)
+        let ownerId = String(describing: model.post.sourceId)
         dataFetcher.feedDataFetcher.getComments(postId: String(describing: model.post.postId), ownerid: ownerId) { [weak self] result in
             guard let self else { return }
             switch result {
@@ -53,6 +53,7 @@ class PostDetailPresenter: PostDetailViewInput {
                 completion()
             case .failure(let error):
                 print(error)
+                completion()
             }
         }
     }
@@ -76,7 +77,6 @@ class PostDetailPresenter: PostDetailViewInput {
     func createNewComment(message: String) {
         let ownerId = model.post.sourceId > 0 ? model.post.sourceId : -model.post.sourceId
         let date = Date()
-        let timeInterval = date.timeIntervalSince1970
         dataFetcher.feedDataFetcher.createComments(postId: String(describing: model.post.postId), ownerId: String(describing: ownerId), message: message) { [weak self] in
             guard let self else { return }
             self.setPostComments {

@@ -102,6 +102,12 @@ class TopView: UIView {
         self.closure = closure
     }
     
+    func prepareForReuse() {
+        avatarImageView.image = nil
+        nameLabel.text = nil
+        dateLabel.text = nil
+    }
+    
     @objc
     func avataOrNameTapped() {
         closure?()

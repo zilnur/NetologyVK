@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PostDetailViewController: UIViewController {
+class PostDetailViewController: ViewController {
     
     var presenter: PostDetailViewInput!
     

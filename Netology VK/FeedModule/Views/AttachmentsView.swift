@@ -12,7 +12,7 @@ class AttachmentsView: UIView {
         return view
     }()
     
-    var height: Int? {
+    var height: Int? = nil {
         didSet {
             setupHeigth()
         }
@@ -60,5 +60,6 @@ class AttachmentsView: UIView {
     func prepareForReuse() {
         imageView.image = nil
         height = nil
+        imageHeightConstraint = nil
     }
 }

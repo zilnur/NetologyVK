@@ -28,6 +28,7 @@ class PostTableViewCell: UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        topView.prepareForReuse()
         postView.prepareForReuse()
         repostView.prepareForReuse()
         attachmentsView.prepareForReuse()
@@ -57,7 +58,7 @@ class PostTableViewCell: UITableViewCell {
             repostView.setValuse(from: history, handler: handler)
         }
         
-        if let attachments = model.attachements {
+        if let attachments {
             attachmentsView.setValues(from: attachments)
         }
         
